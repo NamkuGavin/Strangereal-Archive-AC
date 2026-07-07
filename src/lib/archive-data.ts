@@ -53,7 +53,7 @@ export type Conflict = {
   id: ID;
   name: string;
   year: string;
-  era: "1990s" | "2000s" | "2010s" | "2020s";
+  era: "1990s" | "2000s" | "2010s" | "2020s" | "2040s";
   nations: ID[];
   squadrons: ID[];
   pilots: ID[];
@@ -191,73 +191,232 @@ export const nations: Nation[] = [
 
 export const conflicts: Conflict[] = [
   {
+    id: "skully-islands",
+    name: "Skully Islands Insurrection",
+    year: "1995",
+    era: "1990s",
+    nations: ["fcu", "skully-islands"],
+    squadrons: ["scarface"],
+    pilots: ["phoenix"],
+    aircraft: ["f22", "su27", "mig29"],
+    weapons: ["msl", "qaam", "xmaa"],
+    summary:
+      "A rebel insurrection in the Skully Islands where a well-armed militia overthrew the local government and seized military bases, refineries, and strategic facilities. The FCU military struggled to retake the island chain until Scarface Squadron was deployed.",
+    result:
+      "FCU/Unified Command victory; rebel forces were eliminated and the Skully Islands returned to Federation control.",
+    events: [
+      {
+        year: "1995",
+        text: "A militia force stages a coup d'état and takes control of the Skully Islands.",
+      },
+      {
+        year: "1995",
+        text: "The FCU launches repeated counterattacks but suffers setbacks from organized rebel defenses.",
+      },
+      {
+        year: "1995-12-31",
+        text: "Scarface Squadron defeats rebel forces and eliminates their base in the southern Usean island chain.",
+      },
+    ],
+    aftermath:
+      "The insurrection established Scarface Squadron's reputation and foreshadowed later Usean instability.",
+  },
+
+  {
     id: "belkan",
     name: "Belkan War",
     year: "1995",
     era: "1990s",
-    nations: ["belka", "ustio", "osea", "sapin", "north-osea"],
-    squadrons: ["galm", "gault", "wizard", "sorcerer", "schnee", "espada"],
+    nations: ["belka", "ustio", "osea", "sapin", "north-osea", "gebet", "recta"],
+    squadrons: ["galm", "gault", "wizard", "sorcerer", "schnee", "espada", "gelb"],
     pilots: ["cipher", "pixy", "pj"],
-    aircraft: ["f15c", "adfx01", "adfx02", "f14d", "su47", "mirage"],
-    weapons: ["msl", "xmaa", "qaam", "tls", "mpbm"],
+    aircraft: ["f15c", "adfx01", "adfx02", "f14d", "su47", "mirage", "xb0"],
+    weapons: ["msl", "xmaa", "qaam", "tls", "mpbm", "v2"],
     summary:
-      "A 1995 war caused by Belkan expansion against its neighbors. Ustio's mercenary squadrons and the Allied Forces pushed Belka back until the conflict escalated into nuclear catastrophe.",
+      "A brief but catastrophic war triggered by Belka's economic collapse, territorial resentment, and discovery of resources in Ustio. Belka launched a blitz campaign against neighboring states, but Allied Forces and Ustio's mercenary units reversed the invasion.",
     result:
-      "Allied victory; Belka surrendered after the Waldreich nuclear detonations and later splinter groups formed A World With No Boundaries and the Grey Men.",
+      "Allied victory; Belka signed the Treaty of Lumen after detonating seven nuclear devices in the Waldreich Mountains. Later, extremist remnants formed A World With No Boundaries.",
     events: [
       {
-        year: "1995-03",
-        text: "Belka launches offensives against neighboring states including Ustio.",
+        year: "1995-03-25",
+        text: "The Belkan War begins as Belka invades Ustio, Osea, Sapin, and nearby former territories.",
       },
       {
-        year: "1995-04",
-        text: "Ustio hires mercenary pilots; Galm Team begins reversing Belkan gains.",
+        year: "1995-03-30",
+        text: "Nearly all of Ustio falls under Belkan control, forcing Ustio to rely heavily on mercenary pilots.",
       },
       {
-        year: "1995-05",
-        text: "Allied Forces advance through Belkan-held territory and destroy major strategic assets.",
+        year: "1995-04-01",
+        text: "Ustio allies with Osea and begins organized resistance against Belka.",
+      },
+      {
+        year: "1995-04-24",
+        text: "Allied Forces launch Offensive Campaign No. 4101 to push Belka back and secure supply routes.",
+      },
+      {
+        year: "1995-05-13",
+        text: "Ustio's capital Directus is liberated from Belkan occupation.",
+      },
+      {
+        year: "1995-05-23",
+        text: "Allied Forces destroy Excalibur, Belka's anti-aircraft laser superweapon.",
+      },
+      {
+        year: "1995-06-01",
+        text: "Allied Forces bomb Hoffnung, an industrial Belkan city, deepening moral controversy around the war.",
       },
       {
         year: "1995-06-06",
         text: "Belka detonates seven nuclear weapons in the Waldreich Mountains to halt the Allied advance.",
       },
       {
+        year: "1995-06-20",
+        text: "The Treaty of Lumen is signed, officially ending the Belkan War.",
+      },
+      {
+        year: "1995-12-25",
+        text: "A World With No Boundaries launches a coup using the V2 launch system.",
+      },
+      {
         year: "1995-12-31",
-        text: "A World With No Boundaries is defeated over Avalon Dam after Pixy's ADFX-02 is shot down.",
+        text: "Cipher defeats Pixy's ADFX-02 over Avalon Dam and prevents the V2 launch.",
       },
     ],
     aftermath:
-      "Belka's defeat and territorial losses created long-running resentment that fed later conspiracies in the Circum-Pacific War and other shadow conflicts.",
+      "Belka's defeat, partition, and humiliation created long-term resentment. Belkan conspirators later influenced the Circum-Pacific War, Usean instability, and several weapons programs.",
   },
+
+  {
+    id: "usean-coup",
+    name: "Usean Coup d'état",
+    year: "1997–1998",
+    era: "1990s",
+    nations: ["usea", "fcu", "osea"],
+    squadrons: ["scarface", "lancer", "beast", "cocoon", "albireo"],
+    pilots: ["phoenix"],
+    aircraft: ["f22", "su35", "su37", "yf23"],
+    weapons: ["msl", "qaam", "xmaa", "saam"],
+    summary:
+      "A large-scale coup across Usea organized by rebel extremists who opposed southern Usean countries signing a military pact with Osea. Rebel forces seized territory and military assets, forcing Unified Command to deploy Scarface Squadron.",
+    result:
+      "Unified Command victory; the coup was defeated through Scarface Squadron's campaign across Usea.",
+    events: [
+      {
+        year: "1997-05-30",
+        text: "Rebellion breaks out across Usea and a continent-wide coup d'état begins.",
+      },
+      {
+        year: "1998-03-20",
+        text: "Usean Rebel Forces attack Twinkle Islands, where Phoenix begins turning the tide for the Allied side.",
+      },
+      {
+        year: "1998",
+        text: "Scarface Squadron defeats multiple rebel ace units and dismantles the rebel military network.",
+      },
+    ],
+    aftermath:
+      "The conflict worsened Usean mistrust toward foreign military influence and added instability before the Ulysses disaster and Continental War.",
+  },
+
   {
     id: "continental",
     name: "Continental War",
     year: "2003–2005",
     era: "2000s",
-    nations: ["erusea", "isaf"],
+    nations: ["erusea", "isaf", "fcu", "san-salvacion"],
     squadrons: ["mobius", "yellow"],
     pilots: ["mobius1", "yellow13", "yellow4"],
     aircraft: ["f22", "su37"],
-    weapons: ["qaam", "saam", "xmaa", "tls"],
+    weapons: ["qaam", "saam", "xmaa", "tls", "stonehenge"],
     summary:
-      "A Usean war in which Erusea seized much of the continent and used Stonehenge as a strategic anti-air and anti-asteroid weapon. ISAF's counteroffensive eventually centered on the ace Mobius 1.",
+      "A Usean war caused by post-Ulysses instability, refugee pressure, and Erusea's seizure of San Salvacion and Stonehenge. Erusea repurposed Stonehenge from an anti-asteroid railgun network into a continent-scale anti-air weapon, forcing ISAF into retreat before Mobius 1 helped reverse the war.",
     result:
-      "ISAF victory; Stonehenge and Megalith were destroyed, Erusea surrendered, and Free Erusea remnants continued sporadic insurgency afterward.",
+      "ISAF victory; Stonehenge was destroyed, Farbanti fell, Erusea surrendered, and Megalith was destroyed after rogue Erusean officers attempted retaliation.",
     events: [
       {
-        year: "1999",
-        text: "Ulysses impacts destabilize Usea and leave Stonehenge as a decisive military asset.",
+        year: "1999-07-08",
+        text: "Ulysses fragments devastate Usea, creating refugee and infrastructure crises.",
       },
-      { year: "2003", text: "Erusea begins the war and forces ISAF into retreat." },
       {
-        year: "2004",
-        text: "ISAF regains momentum after operations across Usea and the rise of Mobius 1.",
+        year: "2003-Summer",
+        text: "Erusea invades San Salvacion and seizes Stonehenge.",
       },
-      { year: "2005-09-19", text: "Erusea officially surrenders after ISAF destroys Megalith." },
+      {
+        year: "2003-08-22",
+        text: "FCU President Robert Sinclair establishes ISAF and demands Erusea withdraw.",
+      },
+      {
+        year: "2003-09-14",
+        text: "ISAF's first offensive against Stonehenge fails, forcing ISAF back to Los Canas.",
+      },
+      {
+        year: "2004-09-16",
+        text: "ISAF establishes headquarters at North Point and prepares a long counteroffensive.",
+      },
+      {
+        year: "2004-11-23",
+        text: "ISAF sinks Erusea's Aegir Fleet at Comberth Harbor.",
+      },
+      {
+        year: "2004-12-31",
+        text: "ISAF and Erusea clash in a large-scale air battle over the Comona Islands.",
+      },
+      {
+        year: "2005-01-24",
+        text: "ISAF lands on the Usean mainland and begins retaking territory.",
+      },
+      {
+        year: "2005-04-02",
+        text: "Mobius 1 destroys Stonehenge, breaking Erusea's air-denial advantage.",
+      },
+      {
+        year: "2005-07-10",
+        text: "ISAF liberates San Salvacion.",
+      },
+      {
+        year: "2005-09-19",
+        text: "Farbanti falls and Erusea surrenders to ISAF.",
+      },
+      {
+        year: "2005-09-26",
+        text: "Rogue Erusean officers seize Megalith, but Mobius Squadron destroys it.",
+      },
     ],
     aftermath:
-      "Usea remained politically unstable, with Free Erusea uprisings and unresolved Erusean grievances feeding later conflicts.",
+      "Usea remained unstable. Free Erusea insurgents continued resistance, and the continent's reconstruction later became tied to the International Space Elevator.",
   },
+
+  {
+    id: "free-erusea-2006",
+    name: "Free Erusea Uprising",
+    year: "2006",
+    era: "2000s",
+    nations: ["erusea", "isaf"],
+    squadrons: ["mobius"],
+    pilots: ["mobius1"],
+    aircraft: ["f22", "su37", "f15c"],
+    weapons: ["msl", "qaam", "xmaa"],
+    summary:
+      "A post-Continental War insurgency launched by Free Erusea, a network of former Erusean military officers opposed to ISAF oversight and Erusea's provisional government.",
+    result: "ISAF victory; Mobius 1 defeated Free Erusea during Operation Katina.",
+    events: [
+      {
+        year: "2006-09-26",
+        text: "Free Erusea begins an armed insurrection and attacks targets across Usea.",
+      },
+      {
+        year: "2006-09-26",
+        text: "ISAF launches Operation Katina and deploys Mobius 1 with AWACS SkyEye.",
+      },
+      {
+        year: "2006",
+        text: "Mobius 1 defeats Free Erusea and ends the uprising.",
+      },
+    ],
+    aftermath:
+      "Free Erusea did not disappear completely; Erusean resentment and militarized nationalism resurfaced in later Usean conflicts.",
+  },
+
   {
     id: "circum",
     name: "Circum-Pacific War",
@@ -266,69 +425,292 @@ export const conflicts: Conflict[] = [
     nations: ["osea", "yuktobania", "belka", "north-osea"],
     squadrons: ["wardog", "razgriz", "grabacr", "ofnir"],
     pilots: ["blaze", "nagase", "grimm", "bartlett", "snow"],
-    aircraft: ["f14d", "su47", "f15c"],
-    weapons: ["msl", "xmaa", "lasm", "sffs", "8aam"],
+    aircraft: ["f14d", "su47", "f15c", "arkbird"],
+    weapons: ["msl", "xmaa", "lasm", "sffs", "8aam", "solg", "v2"],
     summary:
-      "A large-scale war between the Osean Federation and the Union of Yuktobanian Republics, later revealed to be orchestrated by Belkan nationalists known as the Grey Men.",
+      "A large-scale Osea-Yuktobania war secretly engineered by Belkan nationalists known as the Grey Men. The war escalated from border incidents and false-flag attacks into naval battles, mainland invasions, terrorism, Arkbird weaponization, and the SOLG crisis.",
     result:
-      "Osea-Yuktobania coalition victory; the Grey Men were defeated and peace between the two superpowers was restored.",
+      "Osea-Yuktobania coalition victory; the Grey Men plot was exposed, Razgriz destroyed the SOLG, and peace between the superpowers was restored.",
     events: [
       {
-        year: "2010-09-27",
-        text: "Yuktobania declares war on Osea and the Circum-Pacific War begins.",
+        year: "2010-09-23",
+        text: "Unidentified aircraft attack near Cape Landers, leaving Wardog Squadron with heavy losses.",
       },
       {
-        year: "2010-11",
-        text: "Wardog Squadron is framed as traitors and later resurfaces as Razgriz Squadron.",
+        year: "2010-09-27",
+        text: "Yuktobania declares war on Osea and attacks Port Saint Hewlett.",
+      },
+      {
+        year: "2010-09-30",
+        text: "The Scinfaxi appears in combat and Osean carriers Vulture and Buzzard are sunk at Eaglin Straits.",
+      },
+      {
+        year: "2010-10-04",
+        text: "Wardog Squadron sinks the Scinfaxi near Sand Island.",
+      },
+      {
+        year: "2010-10-25",
+        text: "The Arkbird is sabotaged and rendered inoperable.",
+      },
+      {
+        year: "2010-11-01",
+        text: "Osea begins an invasion of the Yuktobanian mainland.",
+      },
+      {
+        year: "2010-11-04",
+        text: "Nerve gas is used in Bana and Apito International Airport is attacked, deepening the war's chaos.",
+      },
+      {
+        year: "2010-12-07",
+        text: "Wardog Squadron is framed and shot down while fleeing aboard training aircraft.",
+      },
+      {
+        year: "2010-12-09",
+        text: "President Harling is rescued from Stier Castle and Razgriz Squadron is formed.",
+      },
+      {
+        year: "2010-12-19",
+        text: "Razgriz shoots down the Arkbird after it is weaponized with a nuclear payload.",
       },
       {
         year: "2010-12-30",
-        text: "Razgriz raids the SOLG control facility at Sudentor, exposing the Grey Men plot.",
+        text: "Harling and Nikanor order both militaries to disarm; coalition forces raid Gründer facilities in Sudentor.",
       },
       {
         year: "2010-12-31",
-        text: "Razgriz destroys the falling SOLG over Oured Bay, ending the immediate crisis.",
+        text: "Razgriz destroys Grabacr, Ofnir, and the falling SOLG above Oured.",
       },
     ],
     aftermath:
-      "The war weakened both superpowers but also revealed the Grey Men conspiracy and turned Razgriz into a modern legend.",
+      "The war revealed Belkan manipulation through the Grey Men and transformed Razgriz into a legend. It also exposed the danger of military-industrial conspiracies and orbital weapons.",
   },
+
+  {
+    id: "emmeria-estovakia",
+    name: "Emmeria-Estovakia War",
+    year: "2015–2016",
+    era: "2010s",
+    nations: ["emmeria", "estovakia", "nordennavic"],
+    squadrons: ["garuda", "strigon", "avalanche", "windhover"],
+    pilots: ["talisman", "shamrock", "pasternak"],
+    aircraft: ["f15e", "su33", "cfa44", "aigaion"],
+    weapons: ["msl", "qaam", "xmaa", "admm", "railgun", "chandelier", "nimbus"],
+    summary:
+      "A major Anean war born from Estovakia's post-Ulysses collapse, civil war, military rule, and resentment toward Emmeria. Estovakia invaded Gracemeria using the Aerial Fleet and Nimbus cruise missiles, forcing Emmeria into a long retreat before Garuda Team spearheaded the counteroffensive.",
+    result:
+      "Emmerian victory; Gracemeria was liberated, the Aerial Fleet and Chandelier were destroyed, Estovakia's anti-government coup paralyzed the war effort, and a ceasefire followed.",
+    events: [
+      {
+        year: "2007-06-30",
+        text: "Estovakia's internal factions fall into civil war after the Lyes United Front suppresses resistance.",
+      },
+      {
+        year: "2013-10-29",
+        text: "The Estovakian Civil War ends after the Eastern Faction defeats the LUF.",
+      },
+      {
+        year: "2015-08-30",
+        text: "Estovakia invades Gracemeria; the P-1112 Aigaion and Strigon Team help overwhelm Emmerian defenses.",
+      },
+      {
+        year: "2015-11-24",
+        text: "Remaining Emmerian forces defend Vitoze from Estovakian bombers.",
+      },
+      {
+        year: "2015-11-27",
+        text: "Emmerian ground forces break through Sipli Field to begin retaking Khesed Island.",
+      },
+      {
+        year: "2015-12-27",
+        text: "Bartolomeo Fortress falls and Emmeria regains control of Khesed Island.",
+      },
+      {
+        year: "2016-01-26",
+        text: "Emmerian forces land on western Anea and establish a bridgehead.",
+      },
+      {
+        year: "2016-02-20",
+        text: "Garuda Team destroys the Aerial Fleet, restoring Emmerian air superiority.",
+      },
+      {
+        year: "2016-03-31",
+        text: "Emmeria liberates Gracemeria, but the city is targeted by cruise missiles that night.",
+      },
+      {
+        year: "2016-04-01",
+        text: "Emmerian forces destroy the Chandelier railgun on Sonne Island.",
+      },
+    ],
+    aftermath:
+      "The war ended with Estovakia's military government collapsing and Emmeria reclaiming its homeland, but Anea remained scarred by Ulysses-era instability.",
+  },
+
   {
     id: "lighthouse",
     name: "Lighthouse War",
     year: "2019",
     era: "2010s",
-    nations: ["osea", "erusea", "isaf"],
-    squadrons: ["spare", "strider", "sol", "mihaly"],
-    pilots: ["trigger", "count", "avril", "mihaly"],
-    aircraft: ["f15c", "f22", "x02s", "su30sm", "adf11f"],
-    weapons: ["msl", "qaam", "8aam", "eml", "uav", "xsdb"],
+    nations: ["osea", "erusea", "isaf", "iun", "shilage", "voslage"],
+    squadrons: ["mage", "spare", "strider", "cyclops", "sol", "mihaly"],
+    pilots: ["trigger", "count", "avril", "mihaly", "harling", "cossette"],
+    aircraft: ["f15c", "f22", "x02s", "su30sm", "adf11f", "arsenal-bird"],
+    weapons: ["msl", "qaam", "8aam", "eml", "uav", "xsdb", "stonehenge"],
     summary:
-      "A war between Osea and Erusea over the International Space Elevator, marked by container-launched drones, Arsenal Birds, satellite collapse, and autonomous aircraft.",
+      "A war between Osea and Erusea over the International Space Elevator, shaped by container-launched drones, Arsenal Birds, information warfare, penal squadrons, satellite collapse, Erusean civil fragmentation, and autonomous ADF-11F aircraft.",
     result:
-      "Osean-Erusean coalition elements recaptured the Lighthouse, the advanced drone threat was destroyed, and a ceasefire was signed at the Expo City Conference.",
+      "Coalition victory; the Lighthouse was recaptured, Arsenal Bird Justice and the ADF-11F drones were destroyed, and Osea and Erusea signed a ceasefire at the Expo City Conference.",
     events: [
       {
         year: "2019-05-15",
-        text: "Erusea launches surprise attacks on Osean ports and captures the International Space Elevator.",
+        text: "Erusea launches drone strikes against four Osean naval ports, declares war, and captures the International Space Elevator.",
+      },
+      {
+        year: "2019-05-17",
+        text: "Osea and the IUN Peacekeeping Force begin Operation Eastern Wind.",
+      },
+      {
+        year: "2019-05-30",
+        text: "Osea's two-pronged offensive toward Farbanti fails and the Kestrel II is sunk.",
+      },
+      {
+        year: "2019-06-06",
+        text: "Former President Harling dies during a failed rescue operation near the space elevator; Trigger is later blamed.",
       },
       {
         year: "2019-07",
-        text: "Trigger is transferred from Mage to Spare Squadron after being falsely accused in Harling's death.",
+        text: "Trigger is transferred to Spare Squadron, a penal unit used for high-risk operations.",
       },
-      { year: "2019-08", text: "Osea destroys Arsenal Bird Liberty using Stonehenge." },
+      {
+        year: "2019-08-10",
+        text: "Osea forms the Long Range Strategic Strike Group to exploit a gap in Erusea's drone defense network.",
+      },
+      {
+        year: "2019-08-19",
+        text: "Osea reactivates Stonehenge and shoots down Arsenal Bird Liberty.",
+      },
       {
         year: "2019-09",
-        text: "Farbanti falls and the satellite network collapse throws Usea into chaos.",
+        text: "Captain Matias Torres rebels with the Alicorn and attempts to force his own end to the war.",
       },
       {
-        year: "2019-10",
-        text: "A coalition destroys Arsenal Bird Justice and the ADF-11F drones around the Lighthouse.",
+        year: "2019-09-19",
+        text: "Osea attacks Farbanti; satellite destruction cuts communications across Usea.",
       },
-      { year: "2019-12", text: "A ceasefire is signed at the Expo City Conference." },
+      {
+        year: "2019-10-01",
+        text: "Shilage and other territories annexed by Erusea declare independence, triggering internal conflict.",
+      },
+      {
+        year: "2019-10-31",
+        text: "Osean and Erusean coalition forces shoot down Arsenal Bird Justice and destroy the ADF-11F drones near the Lighthouse.",
+      },
+      {
+        year: "2019-12-01",
+        text: "Osea and Erusea sign a ceasefire at the Expo City Conference.",
+      },
     ],
     aftermath:
-      "The war left Usea fractured and made autonomous drone warfare the defining strategic problem of the era.",
+      "Usea was left politically fractured, while autonomous drone warfare and AI-driven combat became the defining strategic threat of the era.",
+  },
+
+  {
+    id: "aurelian",
+    name: "Aurelian War",
+    year: "2020",
+    era: "2020s",
+    nations: ["aurelia", "leasath"],
+    squadrons: ["gryphus", "falco", "alect"],
+    pilots: ["gryphus1", "navarro"],
+    aircraft: ["f22", "su37", "x02", "fenrir", "gleipnir"],
+    weapons: ["msl", "qaam", "xmaa", "shock-cannon", "swbm"],
+    summary:
+      "A South Osean conflict where Leasath invaded Aurelia after years of civil war and economic collapse. Diego Gaspar Navarro justified the invasion as retaliation for alleged exploitation, while secretly tying the war to weapons development and arms profiteering.",
+    result:
+      "Aurelian victory; Gryphus Squadron reversed Leasath's occupation, destroyed the Gleipnir and Archelon Fortress, liberated Griswall, and removed Navarro from power.",
+    events: [
+      {
+        year: "2019",
+        text: "The Leasath Civil War ends after roughly a decade of fighting, leaving Navarro in power.",
+      },
+      {
+        year: "2020-10",
+        text: "Leasath invades Aurelia using the Gleipnir aerial fortress and captures most of the country.",
+      },
+      {
+        year: "2020-10",
+        text: "Gryphus Squadron repels Leasath's attack on Aubrey Base, one of Aurelia's last surviving bases.",
+      },
+      {
+        year: "2020-11",
+        text: "Aurelian forces retake Port Patterson.",
+      },
+      {
+        year: "2020-11",
+        text: "Aurelia disables Gleipnir's stealth system and shoots down the aerial fortress, liberating Santa Elva.",
+      },
+      {
+        year: "2020-12",
+        text: "Aurelia retakes Sachana Air Base in the Raven Woods.",
+      },
+      {
+        year: "2020-12",
+        text: "Aurelian forces liberate Griswall while Leasath regroups at Archelon Fortress.",
+      },
+      {
+        year: "2020-12",
+        text: "Gryphus Squadron destroys Archelon Fortress and ends the war.",
+      },
+    ],
+    aftermath:
+      "Leasath's military regime collapsed, Navarro was removed, and Aurelia survived as an independent state after near-total occupation.",
+  },
+
+  {
+    id: "corporate",
+    name: "Corporate War",
+    year: "2040",
+    era: "2040s",
+    nations: ["upeo", "general-resource", "neucom", "ouroboros"],
+    squadrons: ["sarf"],
+    pilots: ["nemo", "rena", "dision", "erich", "fiona", "cynthia"],
+    aircraft: ["su37", "f22", "r101", "x49"],
+    weapons: ["msl", "qaam", "laser", "electrosphere"],
+    summary:
+      "A simulated 2040 conflict from Ace Combat 3: Electrosphere, centered on the collapse of state authority in Usea and the rise of megacorporations General Resource and Neucom. UPEO attempts peacekeeping while Ouroboros manipulates the conflict through transhumanist and Electrosphere-related ambitions.",
+    result:
+      "Variable outcome depending on player route; in all simulated routes, Abyssal Dision dies. The simulation is used by Simon Orestes Cohen to test Dision's fate before Nemo is released into the real world.",
+    events: [
+      {
+        year: "2036",
+        text: "A General Resource control system failure sparks economic conflict with Neucom.",
+      },
+      {
+        year: "2040",
+        text: "Tensions between General Resource and Neucom erupt into the Faith Park Dispute.",
+      },
+      {
+        year: "2040",
+        text: "Neucom begins large-scale military operations against General Resource.",
+      },
+      {
+        year: "2040",
+        text: "UPEO's SARF conducts peacekeeping operations to contain the corporate war.",
+      },
+      {
+        year: "2040",
+        text: "Ceasefire negotiations repeatedly fail as both corporations exploit loopholes and launch covert attacks.",
+      },
+      {
+        year: "2040",
+        text: "Ouroboros emerges, led by the digital copy of Abyssal Dision, and stages a coup.",
+      },
+      {
+        year: "2040",
+        text: "Neucom, General Resource, and UPEO form an ad-hoc alliance against Ouroboros.",
+      },
+    ],
+    aftermath:
+      "The conflict frames Ace Combat 3's cyberpunk future: megacorporate militaries, weakened national governments, AI pilots, and consciousness uploaded into the Electrosphere.",
   },
 ];
 
