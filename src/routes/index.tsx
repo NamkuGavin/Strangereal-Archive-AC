@@ -15,6 +15,7 @@ import { HudLabel, RadarBackground, JetSilhouette, StatusBadge } from "@/compone
 import { ArchiveCard } from "@/components/archive-card";
 import { aircraft, squadrons, nations, conflicts, pilots, weapons } from "@/lib/archive-data";
 import { THEMES } from "@/lib/theme";
+import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/")({ component: Index });
 
@@ -130,6 +131,7 @@ function Index() {
             title="Aircraft Database"
             description="Airframes, roles, stat readouts, and combat records for every catalogued fighter."
             count={aircraft.length}
+            label_card="AIR_001"
           />
           <ArchiveCard
             to="/squadrons"
@@ -137,6 +139,7 @@ function Index() {
             title="Squadron Records"
             description="Elite flights, mercenary teams, and enemy aces from every catalogued conflict."
             count={squadrons.length}
+            label_card="SQD_002"
           />
           <ArchiveCard
             to="/nations"
@@ -144,6 +147,7 @@ function Index() {
             title="Nation Archive"
             description="Continental powers, kingdoms, and small allied states across Strangereal."
             count={nations.length}
+            label_card="NAT_003"
           />
           <ArchiveCard
             to="/conflicts"
@@ -151,6 +155,7 @@ function Index() {
             title="Conflict Timeline"
             description="Continental wars, superweapon incidents, and the aftermath of each engagement."
             count={conflicts.length}
+            label_card="CFN_004"
           />
           <ArchiveCard
             to="/aces"
@@ -158,6 +163,7 @@ function Index() {
             title="Ace Pilot Dossier"
             description="Classified profiles of player aces, enemy rivals, and supporting personnel."
             count={pilots.length}
+            label_card="ACE_005"
           />
           <ArchiveCard
             to="/weapons"
@@ -165,6 +171,7 @@ function Index() {
             title="Weapon System"
             description="Standard loadouts, air-to-air, air-to-ground, special and experimental munitions."
             count={weapons.length}
+            label_card="WPN_006"
           />
         </div>
       </section>
@@ -174,40 +181,59 @@ function Index() {
         <div className="mb-6">
           <HudLabel>Section 02 · Featured Records</HudLabel>
           <h2 className="mt-1 text-2xl font-bold tracking-wide sm:text-3xl">
-            Priority declassifications
+            Priority Declassifications
           </h2>
         </div>
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+
+        <div className="grid auto-rows-[180px] gap-4 md:grid-cols-2 lg:grid-cols-4">
           <FeatureTile
             to={`/aircraft/${feat.aircraft.id}`}
-            tag="Aircraft"
+            tag="AIRCRAFT_SPEC"
             title={feat.aircraft.name}
             sub={feat.aircraft.role}
+            description="The pinnacle of aeronautical engineering. Variable geometry wing design with advanced fly-by-wire capabilities."
+            image="/images/feature/f22_raptor.png"
+            className="md:col-span-2 md:row-span-2"
+            featured
           />
+
           <FeatureTile
             to={`/squadrons/${feat.squadron.id}`}
-            tag="Squadron"
+            tag="UNIT_HISTORY"
             title={feat.squadron.name}
             sub={feat.squadron.status}
+            description="Elite squadron record containing unit history, affiliation, and battlefield operations."
+            image="/images/feature/razgriz_art.jpg"
           />
-          <FeatureTile
-            to={`/conflicts/${feat.conflict.id}`}
-            tag="Conflict"
-            title={feat.conflict.name}
-            sub={feat.conflict.year}
-          />
+
           <FeatureTile
             to={`/aces/${feat.pilot.id}`}
-            tag="Ace"
-            title={feat.pilot.callsign}
+            tag="ACE_PROFILE"
+            title={`Callsign: ${feat.pilot.callsign}`}
             sub={feat.pilot.type}
+            description="Classified pilot dossier containing callsign history, allegiance, and combat behavior."
+            image="/images/feature/f15c_cipher.jpg"
             classified={feat.pilot.classified}
           />
+
+          <FeatureTile
+            to={`/conflicts/${feat.conflict.id}`}
+            tag="CONFLICT_LOG"
+            title={feat.conflict.name}
+            sub={String(feat.conflict.year)}
+            description="A major Strangereal conflict involving superweapon escalation, coalition warfare, and post-war instability."
+            image="/images/feature/belkan_war.jpg"
+            className="md:col-span-2"
+          />
+
           <FeatureTile
             to={`/weapons/${feat.weapon.id}`}
-            tag="Weapon"
+            tag="WEAPON_SYS"
             title={feat.weapon.name}
             sub={feat.weapon.type}
+            description="Experimental weapon system record containing tactical function and deployment classification."
+            image="/images/feature/mpbm.jpg"
+            className="md:col-span-4"
           />
         </div>
       </section>
@@ -293,32 +319,70 @@ function FeatureTile({
   tag,
   title,
   sub,
+  description,
+  image,
   classified,
+  className,
+  featured = false,
 }: {
   to: string;
   tag: string;
   title: string;
   sub: string;
+  description: string;
+  image: string;
   classified?: boolean;
+  className?: string;
+  featured?: boolean;
 }) {
   return (
     <Link
       to={to}
-      className="group hud-panel hud-corners scanline relative block overflow-hidden rounded-sm p-4 transition-transform hover:-translate-y-0.5"
+      className={cn(
+        "group hud-panel scanline relative block overflow-hidden rounded-sm",
+        "transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_15px_-8px_var(--hud-glow)]",
+        className,
+      )}
     >
-      <div className="font-mono text-[10px] uppercase tracking-widest text-[color:var(--hud)]/80">
-        // {tag}
-      </div>
-      <div className="mt-2 truncate text-base font-semibold">{title}</div>
-      <div className="mt-1 truncate text-[11px] text-muted-foreground">{sub}</div>
-      <div className="mt-3 inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-widest text-[color:var(--hud)]">
-        Open <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
-      </div>
+      {/* Background image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+        style={{ backgroundImage: `url(${image})` }}
+      />
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-slate-950/45 transition-colors duration-300 group-hover:bg-slate-950/25" />
+      {/* Bottom gradient */}
+      <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-slate-950 via-slate-950/70 to-transparent" />
+      {/* Scanline layer */}
+      <div className="scanline pointer-events-none absolute inset-0 opacity-40" />
       {classified && (
-        <div className="pointer-events-none absolute right-2 top-2 rounded-sm border border-red-500/60 px-1.5 py-0.5 font-mono text-[9px] uppercase tracking-widest text-red-400">
+        <div className="pointer-events-none absolute right-3 top-3 rounded-sm border border-red-500/70 bg-slate-950/70 px-2 py-1 font-mono text-[9px] uppercase tracking-widest text-red-400">
           CLS
         </div>
       )}
+      <div className="relative z-10 flex h-full flex-col justify-end p-5">
+        <div className="w-fit bg-[color:var(--hud)] px-2 py-1 font-mono text-[9px] uppercase tracking-widest text-background">
+          {tag}
+        </div>
+        <h3 className="mt-3 text-lg font-semibold uppercase tracking-wide text-foreground">
+          {title}
+        </h3>
+        <p className="mt-1 text-xs text-muted-foreground">{sub}</p>
+        <p
+          className={cn(
+            "mt-3 max-w-md text-xs leading-relaxed text-foreground/90 transition-all duration-300",
+            featured
+              ? "line-clamp-3 opacity-100"
+              : "line-clamp-3 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100",
+          )}
+        >
+          {description}
+        </p>
+        <div className="mt-4 flex translate-y-2 items-center gap-1 font-mono text-[10px] uppercase tracking-widest text-[color:var(--hud)] opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+          Open
+          <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />
+        </div>
+      </div>
     </Link>
   );
 }

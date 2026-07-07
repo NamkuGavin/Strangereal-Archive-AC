@@ -11,6 +11,7 @@ export function ArchiveCard({
   cta = "Open File",
   count,
   className,
+  label_card,
 }: {
   to: string;
   icon: LucideIcon;
@@ -19,26 +20,28 @@ export function ArchiveCard({
   cta?: string;
   count?: number;
   className?: string;
+  label_card: string;
 }) {
   return (
     <Link
       to={to}
       className={cn(
-        "group hud-panel hud-corners scanline relative block rounded-sm p-5 transition-all",
-        "hover:-translate-y-0.5 hover:shadow-[0_0_35px_-8px_var(--hud-glow)]",
+        "group hud-panel hud-corners scanline relative block rounded-sm px-5 pt-5 pb-3 transition-all",
+        "hover:-translate-y-0.5 hover:shadow-[0_0_15px_-8px_var(--hud-glow)]",
+        "flex flex-col items-center justify-center",
         className,
       )}
     >
-      <div className="flex items-start justify-between gap-3">
-        <div className="grid h-11 w-11 place-items-center rounded-sm border border-[color:var(--hud)]/40 bg-[color:var(--hud)]/5 text-[color:var(--hud)]">
-          <Icon className="h-5 w-5" />
-        </div>
+      <div className="flex self-stretch items-center justify-between">
+        <HudLabel>DATA_ID: {label_card}</HudLabel>
         {count !== undefined && <HudLabel>{count.toString().padStart(3, "0")} REC</HudLabel>}
       </div>
-      <h3 className="mt-4 text-lg font-bold tracking-wide">{title}</h3>
-      <p className="mt-1 line-clamp-2 text-sm text-muted-foreground">{description}</p>
-      <div className="mt-4 flex items-center gap-1 font-mono text-[10px] uppercase tracking-widest text-[color:var(--hud)] opacity-80 group-hover:opacity-100">
-        {cta} <ChevronRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />
+      <Icon className="h-8 w-8 mt-2" />
+      <h3 className="mt-2 text-lg font-bold tracking-wide">{title}</h3>
+      <p className="mt-1 line-clamp-2 text-sm text-muted-foreground text-center">{description}</p>
+      <div className="mt-2 flex translate-y-1 items-center gap-1 font-mono text-[10px] uppercase tracking-widest text-[color:var(--hud)] opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+        {cta}
+        <ChevronRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />
       </div>
     </Link>
   );

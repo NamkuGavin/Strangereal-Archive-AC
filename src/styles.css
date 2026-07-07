@@ -223,7 +223,7 @@
   backdrop-filter: blur(10px);
   box-shadow:
     inset 0 1px 0 color-mix(in oklab, var(--hud) 15%, transparent),
-    0 0 20px -8px var(--hud-glow);
+    0 0 8px -8px var(--hud-glow);
 }
 @utility hud-corners {
   position: relative;
