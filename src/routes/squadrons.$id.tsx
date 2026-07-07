@@ -59,7 +59,14 @@ function Detail() {
             {cnf && <StatusBadge variant="muted">{cnf.name}</StatusBadge>}
           </>
         }
-        media={<EmblemPlaceholder seed={s.id} className="drop-shadow-[0_0_20px_var(--hud-glow)]" />}
+        mediaImage="/images/feature/bg_mobius.png"
+        media={
+          <img
+            src="/images/feature/mobius_squadron.png"
+            alt={`${s.name} emblem`}
+            className="h-40 w-40 object-contain opacity-0 transition-all duration-300 group-hover:scale-105 group-hover:opacity-90"
+          />
+        }
       />
       <div className="mt-6 grid gap-6 lg:grid-cols-[2fr_1fr]">
         <HudPanel>

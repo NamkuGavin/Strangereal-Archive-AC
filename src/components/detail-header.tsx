@@ -25,8 +25,8 @@ export function DetailHeader({
         <div
           className="
         pointer-events-none absolute inset-y-0 right-0 z-0 w-[58%]
-        bg-cover bg-center bg-no-repeat opacity-75
-        transition-all duration-500 group-hover:opacity-90
+        bg-cover bg-center bg-no-repeat opacity-50
+        transition-all duration-500 group-hover:opacity-12
         [mask-image:linear-gradient(to_right,transparent_0%,white_75%,white_100%)]
         [-webkit-mask-image:linear-gradient(to_right,transparent_0%,white_75%,white_100%)]
       "
@@ -49,9 +49,7 @@ export function DetailHeader({
           {right && <div className="mt-4">{right}</div>}
         </div>
 
-        {!mediaImage && media && (
-          <div className="w-full max-w-[280px] text-[color:var(--hud)]">{media}</div>
-        )}
+        {media && <div className="pr-25 w-full text-[color:var(--hud)]">{media}</div>}
       </div>
     </div>
   );

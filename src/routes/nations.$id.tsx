@@ -55,7 +55,14 @@ function Detail() {
             </StatusBadge>
           </>
         }
-        media={<EmblemPlaceholder seed={n.id} />}
+        mediaImage="/images/feature/osea_flag.png"
+        media={
+          <img
+            src="/images/feature/osea_continent.png"
+            alt={`${n.name} emblem`}
+            className="h-75 w-full object-cover opacity-0 transition-all duration-300 group-hover:scale-125 group-hover:opacity-100"
+          />
+        }
       />
       <div className="mt-6 grid gap-6 lg:grid-cols-[2fr_1fr]">
         <HudPanel>

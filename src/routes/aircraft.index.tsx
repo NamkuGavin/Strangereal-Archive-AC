@@ -70,7 +70,7 @@ function AircraftList() {
           </HudLabel>
         }
       />
-      <div className="mb-6 grid gap-5 p-3 sm:p-4">
+      <div className="grid gap-5 mb-6">
         <SearchBar value={q} onChange={setQ} placeholder="Search airframe designation…" />
         <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
           <div className="grid flex-1 gap-5 sm:grid-cols-3 lg:max-w-3xl">
@@ -141,7 +141,7 @@ function AircraftList() {
               <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-black/90 via-black/55 to-transparent" />
 
               {/* Content */}
-              <div className="relative z-10 flex min-h-[320px] flex-col">
+              <div className="relative z-10 flex min-h-[320px] flex-col mb-5">
                 {/* Header */}
                 <div className="flex items-start justify-between gap-3">
                   <div>
