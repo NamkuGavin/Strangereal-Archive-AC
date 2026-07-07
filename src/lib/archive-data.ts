@@ -577,7 +577,7 @@ export const aircraft: Aircraft[] = [
     id: "f22",
     name: "F-22A Raptor",
     role: "Fighter",
-    appearances: ["AC4", "AC5", "AC7"],
+    appearances: ["AC4", "AC5", "AC Zero", "AC7"],
     weapons: ["msl", "xmaa", "qaam"],
     squadrons: ["mobius", "strider"],
     pilots: ["mobius1", "trigger"],

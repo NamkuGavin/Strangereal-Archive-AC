@@ -14,7 +14,7 @@ export function HudPanel({
     <div
       className={cn(
         "hud-panel hud-corners rounded-sm p-5",
-        glow && "shadow-[0_0_30px_-15px_var(--hud-glow)]",
+        glow && "shadow-[0_0_15px_-8px_var(--hud-glow)]",
         className,
       )}
     >
